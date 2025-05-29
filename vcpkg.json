@@ -1,0 +1,27 @@
+{
+  "name": "tfg",
+  "version-string": "1.0.0",
+  "builtin-baseline": "98aa6396292d57e737a6ef999d4225ca488859d5",
+  "dependencies": [
+    {
+      "name": "tl-expected",
+      "version>=": "1.1.0"
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "version>=": "2024-05-23"
+    },
+    {
+      "name": "vcpkg-cmake",
+      "version>=": "2024-04-23"
+    },
+    {
+      "name": "libassert",
+      "version>=": "2.1.1"
+    },
+    {
+      "name": "gtest",
+      "version>=": "1.15.2"
+    }
+  ]
+}
