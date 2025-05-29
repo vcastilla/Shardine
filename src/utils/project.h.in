@@ -1,0 +1,13 @@
+#ifndef PROJECT_H
+#define PROJECT_H
+
+namespace project {
+
+constexpr auto name = "@PROJECT_NAME@";
+constexpr auto version = "@PROJECT_VERSION@";
+constexpr auto version_major = "@PROJECT_VERSION_MAJOR@";
+constexpr auto version_minor = "@PROJECT_VERSION_MINOR@";
+
+} // namespace project
+
+#endif // PROJECT_H

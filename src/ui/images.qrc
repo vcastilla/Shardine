@@ -1,0 +1,29 @@
+<RCC>
+  <qresource prefix="svg">
+    <file>icons/ejectFolder.svg</file>
+    <file>icons/qt.svg</file>
+    <file>icons/qt_dark.svg</file>
+    <file>icons/magicResolveToolbar.svg</file>
+    <file>icons/magicResolveToolbar_dark.svg</file>
+    <file>icons/incompleteFolder.svg</file>
+    <file>icons/mount_dark.svg</file>
+    <file>icons/mount.svg</file>
+    <file>icons/incompleteFolder_dark.svg</file>
+    <file>icons/add_dark.svg</file>
+    <file>icons/add.svg</file>
+    <file>icons/addAny_dark.svg</file>
+    <file>icons/addAny.svg</file>
+    <file>icons/edit_dark.svg</file>
+    <file>icons/edit.svg</file>
+    <file>icons/folder_dark.svg</file>
+    <file>icons/folder.svg</file>
+    <file>icons/greenCheckmark_dark.svg</file>
+    <file>icons/greenCheckmark.svg</file>
+    <file>icons/open_dark.svg</file>
+    <file>icons/open.svg</file>
+    <file>icons/resultIncorrect_dark.svg</file>
+    <file>icons/resultIncorrect.svg</file>
+    <file>icons/save_dark.svg</file>
+    <file>icons/save.svg</file>
+  </qresource>
+</RCC>
