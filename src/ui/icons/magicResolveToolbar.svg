@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
+<!-- Modifications Copyright 2025 Víctor Castilla Rodríguez -->
+<!-- 2025-05-29: Added gray fill -->
 <svg width="16" height="16" fill="none" version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <g stroke="#6C707E" stroke-linecap="round" stroke-linejoin="round">
         <path d="m2.7929 13.793-0.58578-0.5858c-0.39053-0.3905-0.39053-1.0237 0-1.4142l6.5858-6.5858c0.39053-0.39053 1.0237-0.39053 1.4142 0l0.5858 0.58578c0.3905 0.39053 0.3905 1.0237 0 1.4142l-6.5858 6.5858c-0.39053 0.3905-1.0237 0.3905-1.4142 0z"/>

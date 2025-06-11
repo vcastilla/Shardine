@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2000-2023 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
-<!-- Modified from "testSourceFolder" (https://intellij-icons.jetbrains.design/#AllIcons-expui-nodes-testSourceFolder). -->
+<!-- Modifications Copyright 2025 Víctor Castilla Rodríguez -->
+<!-- 2025-05-29: Added eject modifier -->
 <svg width="16" height="16" version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <path d="m2.6328 2.5c-0.56529 0-1.1328 0.54759-1.1328 1.3672v8.2656c0 0.8196 0.56752 1.3672 1.1328 1.3672h5.3672v-0.21289c0-0.0132 0.0012-0.02608 2e-3 -0.03906-0.0051-0.16915 0.04576-0.3436 0.16797-0.48633l3.8984-4.5547c0.11813-0.13793 0.27829-0.20708 0.43555-0.20703 0.15726 4.82e-5 0.31358 0.069028 0.43164 0.20703l1.5645 1.8281v-4.0352c0-0.82843-0.6716-1.5-1.5-1.5h-4.7461l-0.14844-0.1543-1.623-1.6914c-0.09429-0.0983-0.22511-0.1543-0.36133-0.1543z"
           color="#000000" fill="#ebecf0" style="-inkscape-stroke:none"/>

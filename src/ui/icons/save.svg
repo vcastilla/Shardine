@@ -1,4 +1,6 @@
 <!-- Copyright 2000-2022 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license. -->
+<!-- Modifications Copyright 2025 Víctor Castilla Rodríguez -->
+<!-- 2025-05-29: Added gray fill -->
 <svg width="16" height="16" fill="none" version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
     <path d="m2.5 2.5v11h2v-4h7v4h2v-9l-2-2h-1v3h-5v-3z" fill="#ebecf0"/>
     <path d="m5.5 3v2.5h5v-2.5m-6 10v-3.5h7v3.5m-9 0.5v-11h9l2 2v9h-11z" stroke="#6C707E" stroke-linejoin="round"/>

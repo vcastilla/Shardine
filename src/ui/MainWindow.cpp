@@ -1,3 +1,19 @@
+/*
+ * Copyright 2025 Víctor Castilla Rodríguez
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
@@ -429,11 +445,22 @@ void MainWindow::about_dialog() {
     box.setWindowTitle(tr("About %1").arg(m_app_name));
     box.setTextFormat(Qt::RichText);
     box.setText(tr("This is %1 version %2.<br />"
-                   "%1 is a simple filesystem viewer and editor, licensed under the GPL-3.0.<br />"
-                   "Learn more at <a href=\"%3\">%3</a>")
+                   "%1 is a simple filesystem viewer and editor, published under the "
+                   "<a href=\"%3\">GNU General Public License version 3</a>.<br />"
+                   "Learn more about %1 at <a href=\"%4\">%4</a>"
+                   "<hr>"
+                   "<a href=\"%5\">QHexEdit</a> hex editor widget is &copy; 2010-2025 Winfried Simon, "
+                   "licensed under the <a href=\"%6\">LGPL-2.1 license</a>.<br />"
+                   "<a href=\"%7\">Icon set</a> is &copy; 2000-2025 JetBrains s.r.o. and contributors, "
+                   "licensed under the <a href=\"%8\">Apache-2.0 license</a>.")
                         .arg(project::name)
                         .arg(project::version)
-                        .arg(m_app_link));
+                        .arg("https://www.gnu.org/licenses/gpl-3.0.html")
+                        .arg(m_app_link)
+                        .arg("https://github.com/Simsys/qhexedit2")
+                        .arg("https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html")
+                        .arg("https://intellij-icons.jetbrains.design")
+                        .arg("https://www.apache.org/licenses/LICENSE-2.0"));
     box.exec();
 }
 
