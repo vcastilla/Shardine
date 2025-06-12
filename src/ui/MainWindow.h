@@ -20,13 +20,13 @@
 #include <QCloseEvent>
 #include <QMainWindow>
 #include <memory>
-#include <project.h>
 #include <unordered_map>
 #include <utility>
 #include "SegmentModel.h"
 #include "StructureModel.h"
 #include "contr/Controller.h"
 #include "contr/OperationStack.h"
+#include "project.h"
 
 
 QT_BEGIN_NAMESPACE
