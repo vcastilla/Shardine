@@ -171,9 +171,12 @@ bool Controller::are_new_changes_unsaved() const {
 void Controller::generate_segments() {
     m_segments.resize(0);
     for (const auto& s: m_file_system->segments()) {
-        SegmentInfo info{QString::fromStdString(s.name),         "",
-                         QString::fromStdString(s.element_name), utils::cast<int>(s.min_element_index),
-                         utils::cast<int>(s.max_element_index),  s.size};
+        SegmentInfo info{s.name,
+                         "",
+                         s.element_name,
+                         utils::cast<int>(s.min_element_index),
+                         utils::cast<int>(s.max_element_index),
+                         s.size};
         m_segments.emplace_back(info);
     }
 }
