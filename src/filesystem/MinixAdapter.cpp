@@ -37,17 +37,17 @@ MinixAdapter::MinixAdapter(const std::filesystem::path& file_name) : m_fs{file_n
     const auto data_block_info = m_fs.block_info();
 
     m_segments = {
-            {"Boot block", boot_info.begin_address, boot_info.size, [this](auto) { return boot_block(); }},
-            {"Superblock", sb_info.begin_address, sb_info.end_address - sb_info.begin_address,
+            {tr("Boot block"), boot_info.begin_address, boot_info.size, [this](auto) { return boot_block(); }},
+            {tr("Superblock"), sb_info.begin_address, sb_info.end_address - sb_info.begin_address,
              [this](auto) { return superblock(); }},
-            {"Inode bitmap", ino_bitmap_info.begin_address, ino_bitmap_info.size,
+            {tr("Inode bitmap"), ino_bitmap_info.begin_address, ino_bitmap_info.size,
              [this](auto) { return inode_bitmap(); }},
-            {"Data bitmap", data_bitmap_info.begin_address, data_bitmap_info.size,
+            {tr("Data bitmap"), data_bitmap_info.begin_address, data_bitmap_info.size,
              [this](auto) { return data_bitmap(); }},
-            {"Inodes", ino_info.begin_address, ino_info.size, [this](auto idx) { return inode(idx); }, "Inode",
+            {tr("Inodes"), ino_info.begin_address, ino_info.size, [this](auto idx) { return inode(idx); }, tr("Inode"),
              sizeof(minix::INode), min_inode_index(), max_inode_index()},
-            {"Data blocks", data_block_info.begin_address, data_block_info.size,
-             [this](auto idx) { return data_block(idx); }, "Data block", m_fs.superblock().data.block_size,
+            {tr("Data blocks"), data_block_info.begin_address, data_block_info.size,
+             [this](auto idx) { return data_block(idx); }, tr("Data block"), m_fs.superblock().data.block_size,
              min_data_index(), max_data_index()},
     };
 }
