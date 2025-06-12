@@ -56,7 +56,7 @@ QVariant StructureModel::data(const QModelIndex& index, const int role) const {
         case Qt::DisplayRole:
             switch (col) {
                 case 0:
-                    return QString::fromStdString(m_structure.name_at(row));
+                    return m_structure.name_at(row);
                 case 1:
                     return QString::fromStdString(m_structure.value_at(row));
                 case 2:
