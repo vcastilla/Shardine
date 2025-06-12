@@ -17,6 +17,7 @@
 #ifndef MINIXADAPTER_H
 #define MINIXADAPTER_H
 
+#include <QCoreApplication>
 #include <filesystem>
 #include <string>
 #include <vector>
@@ -28,6 +29,8 @@
 namespace fs {
 
 class MinixAdapter final : public FileSystem {
+    Q_DECLARE_TR_FUNCTIONS(MinixAdapter)
+
 public:
     explicit MinixAdapter(const std::filesystem::path& file_name);
 
