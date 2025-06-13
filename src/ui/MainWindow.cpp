@@ -512,6 +512,7 @@ void MainWindow::save_settings() {
     // Save splitter sizes
     settings.setValue("splitter/state", m_ui->splitter->saveState());
     settings.setValue("splitter_2/state", m_ui->splitter_2->saveState());
+    settings.setValue("splitter_3/state", m_ui->splitter_3->saveState());
 
     // Save HexEdit config
     settings.setValue("hex_edit/ascii", m_ui->hexEdit->asciiArea());
@@ -533,6 +534,7 @@ void MainWindow::read_settings() {
     // Restore splitter sizes
     m_ui->splitter->restoreState(settings.value("splitter/state").toByteArray());
     m_ui->splitter_2->restoreState(settings.value("splitter_2/state").toByteArray());
+    m_ui->splitter_3->restoreState(settings.value("splitter_3/state").toByteArray());
 
     // Restore HexEdit config
     m_ui->hexEdit->setAsciiArea(settings.value("hex_edit/ascii", true).toBool());
