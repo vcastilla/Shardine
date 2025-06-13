@@ -57,8 +57,8 @@ private:
 inline std::vector<std::pair<Structure, Structure>> diff(const FileSystem& fs1, const FileSystem& fs2) {
     std::vector<std::pair<Structure, Structure>> result;
 
-    const auto segments1 = fs1.segments();
-    const auto segments2 = fs2.segments();
+    const auto& segments1 = fs1.segments();
+    const auto& segments2 = fs2.segments();
 
     auto seg1 = segments1.begin(), seg2 = segments2.begin();
     for (; seg1 != segments1.end(); ++seg1, ++seg2) {
