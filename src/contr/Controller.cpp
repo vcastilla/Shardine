@@ -182,8 +182,11 @@ void Controller::generate_segments() {
 }
 
 void Controller::backup() {
-    m_backup_path = m_file_path;
-    m_backup_path.replace_filename(m_file_path.filename().string() + '~');
+    if (m_backup_path.empty()) {
+        m_backup_file.open(); // Create temporary file
+        m_backup_path = m_backup_file.fileName().toStdString();
+        m_backup_file.close();
+    }
     std::filesystem::copy_file(m_file_path, m_backup_path, std::filesystem::copy_options::overwrite_existing);
     m_fs_backup = fs::Factory::create(m_backup_path);
 }

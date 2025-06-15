@@ -19,6 +19,7 @@
 
 #include <QFileSystemWatcher>
 #include <QString>
+#include <QTemporaryFile>
 #include <memory>
 #include <vector>
 
@@ -76,6 +77,7 @@ private:
 
     OperationStack m_op_stack;
 
+    QTemporaryFile m_backup_file;
     std::filesystem::path m_file_path;
     std::filesystem::path m_backup_path;
 
