@@ -300,7 +300,8 @@ void MainWindow::choose_file_dialog() {
 }
 
 void MainWindow::open_file(const std::filesystem::path& file_name) {
-    m_contr.close();
+    if (!close_file())
+        return;
 
     if (!m_contr.open(file_name)) {
         QMessageBox::critical(this, tr("Error"), tr("The file does not contain a supported filesystem."));
@@ -312,14 +313,17 @@ void MainWindow::open_file(const std::filesystem::path& file_name) {
     m_segments_model.setSegments(m_contr.get_segments());
     m_ui->listView->setCurrentIndex(m_segments_model.index(0, 0));
 
+    update_fs_info();
+
     enableUI(true);
 }
 
-void MainWindow::close_file() {
+bool MainWindow::close_file() {
     if (!warn_unsaved_changes())
-        return;
+        return false;
 
-    m_contr.close();
+    if (!m_contr.close())
+        return false;
 
     m_struct_model.setStructure({});
     m_segments_model.setSegments({});
@@ -329,6 +333,8 @@ void MainWindow::close_file() {
     update_fs_info();
 
     enableUI(false);
+
+    return true;
 }
 
 void MainWindow::save_changes() {

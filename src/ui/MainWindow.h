@@ -52,7 +52,7 @@ private slots:
 
     void choose_file_dialog();
     void open_file(const std::filesystem::path& file_name);
-    void close_file();
+    bool close_file();
 
     void save_changes();
     void reload_changes_dialog();
