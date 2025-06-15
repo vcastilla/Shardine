@@ -83,6 +83,8 @@ private:
 
     bool warn_unsaved_changes();
     void closeEvent(QCloseEvent* event) override;
+    void dragEnterEvent(QDragEnterEvent* event) override;
+    void dropEvent(QDropEvent* event) override;
 
     const std::unique_ptr<Ui::MainWindow> m_ui;
 

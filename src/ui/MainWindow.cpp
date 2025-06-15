@@ -108,6 +108,8 @@ MainWindow::MainWindow(Controller& contr, QWidget* parent) :
 
     enableUI(false);
 
+    setAcceptDrops(true);
+
     CONNECT(m_ui->actionOpen, &QAction::triggered, this, &MainWindow::choose_file_dialog);
     CONNECT(m_ui->actionClose, &QAction::triggered, this, &MainWindow::close_file);
 
@@ -565,4 +567,14 @@ void MainWindow::closeEvent(QCloseEvent* event) {
     }
     save_settings();
     QMainWindow::closeEvent(event);
+}
+
+void MainWindow::dragEnterEvent(QDragEnterEvent* event) {
+    if (event->mimeData()->hasUrls())
+        event->acceptProposedAction();
+}
+
+void MainWindow::dropEvent(QDropEvent* event) {
+    const auto path = event->mimeData()->urls().last().toLocalFile();
+    open_file(path.toStdString());
 }
