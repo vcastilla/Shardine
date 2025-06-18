@@ -32,13 +32,13 @@ void StructureModel::setStructure(const fs::Structure& structure) {
     m_structure = structure;
     m_fields_modified.clear();
     m_fields_modified.resize(m_structure.fields.size());
-    emit layoutChanged({});
+    emit layoutChanged();
 }
 
 void StructureModel::setByteData(const QByteArray& data) {
     ASSERT(m_structure.raw_data.size() == data.size());
     m_structure.raw_data = data;
-    emit dataChanged({}, {});
+    emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1));
 }
 
 int StructureModel::rowCount(const QModelIndex& /*parent*/) const {
@@ -49,9 +49,9 @@ int StructureModel::columnCount(const QModelIndex& /*parent*/) const {
     return utils::cast<int>(m_header.size());
 }
 
-QVariant StructureModel::data(const QModelIndex& index, const int role) const {
-    const int row = index.row();
-    const int col = index.column();
+QVariant StructureModel::data(const QModelIndex& idx, const int role) const {
+    const int row = idx.row();
+    const int col = idx.column();
     switch (role) {
         case Qt::DisplayRole:
             switch (col) {
@@ -83,33 +83,33 @@ QVariant StructureModel::headerData(const int section, const Qt::Orientation ori
     return {};
 }
 
-void StructureModel::setModified(const int index, const bool value) {
-    ASSERT(index >= 0);
-    ASSERT(index < m_fields_modified.size());
-    m_fields_modified[index] = value;
-    emit dataChanged({}, {});
+void StructureModel::setModified(const int idx, const bool value) {
+    ASSERT(idx >= 0);
+    ASSERT(idx < m_fields_modified.size());
+    m_fields_modified[idx] = value;
+    emit dataChanged(index(idx, 0), index(idx, columnCount() - 1));
 }
 
-bool StructureModel::isModified(const int index) const {
-    ASSERT(index >= 0);
-    ASSERT(index < m_fields_modified.size());
-    return m_fields_modified[index];
+bool StructureModel::isModified(const int idx) const {
+    ASSERT(idx >= 0);
+    ASSERT(idx < m_fields_modified.size());
+    return m_fields_modified[idx];
 }
 
-std::size_t StructureModel::byteOffset(const QModelIndex& index) const {
-    return m_structure.idx_to_size(index.row());
+std::size_t StructureModel::byteOffset(const QModelIndex& idx) const {
+    return m_structure.idx_to_size(idx.row());
 }
 
-std::size_t StructureModel::byteSize(const QModelIndex& index) const {
-    return m_structure.field_size_at(index.row());
+std::size_t StructureModel::byteSize(const QModelIndex& idx) const {
+    return m_structure.field_size_at(idx.row());
 }
 
 void StructureModel::change_selection(HexEdit& hex_edit, const QItemSelection& selected) const {
     if (selected.empty())
         return;
-    const auto index = selected.indexes().first();
-    const auto offset = utils::cast<qint64>(byteOffset(index));
-    const auto size = utils::cast<qint64>(byteSize(index));
+    const auto idx = selected.indexes().first();
+    const auto offset = utils::cast<qint64>(byteOffset(idx));
+    const auto size = utils::cast<qint64>(byteSize(idx));
     hex_edit.setSelection(offset, offset + size);
 }
 
