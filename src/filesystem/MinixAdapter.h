@@ -19,7 +19,6 @@
 
 #include <QCoreApplication>
 #include <filesystem>
-#include <string>
 #include <vector>
 
 #include "FileSystem.h"
@@ -49,8 +48,16 @@ private:
         return m_fs.flush();
     }
 
-    std::string do_name() override {
-        return "MINIX 3";
+    QString do_name() const override {
+        return fs_name;
+    }
+
+    std::filesystem::path do_path() const override {
+        return m_file_path;
+    }
+
+    QString do_fsck_cmd_name() const override {
+        return "/usr/sbin/fsck.minix";
     }
 
     [[nodiscard]] Structure boot_block() const;
@@ -81,6 +88,7 @@ private:
         return m_fs.superblock().data.nzones - 1;
     }
 
+    std::filesystem::path m_file_path;
     minix::MinixFS m_fs;
     std::vector<Segment> m_segments;
 };

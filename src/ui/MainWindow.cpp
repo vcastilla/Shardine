@@ -157,23 +157,19 @@ MainWindow::MainWindow(Controller& contr, QWidget* parent) :
                 update_fs_info();
             });
 
-    // TODO: Move to Controller
     const auto fsck_slot = [this] {
-        QProcess proc;
-        proc.start("/usr/sbin/fsck.minix", {QString::fromStdString(m_file_path)});
-        if (!proc.waitForFinished()) {
+        const auto fsck_res = m_contr.fsck();
+        if (!fsck_res.has_value()) {
             QMessageBox message_box{QMessageBox::Critical, tr("Error"), tr("Command failed to execute")};
-            message_box.setDetailedText(proc.errorString());
+            message_box.setDetailedText(fsck_res.error());
             message_box.exec();
             return;
         }
 
-        if (proc.exitStatus() != QProcess::NormalExit || proc.exitCode() != 0) {
-            QMessageBox::warning(this, tr("Filesystem errors detected"), proc.readAll());
-            return;
-        }
-
-        QMessageBox::information(this, tr("No errors detected"), tr("No filesystem errors were detected."));
+        if (fsck_res->isEmpty())
+            QMessageBox::information(this, tr("No errors detected"), tr("No filesystem errors were detected."));
+        else
+            QMessageBox::warning(this, tr("Filesystem errors detected"), fsck_res.value());
     };
     CONNECT(m_ui->actionCheckConsistency, &QAction::triggered, this, fsck_slot);
 

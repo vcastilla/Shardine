@@ -28,7 +28,7 @@
 
 namespace fs {
 
-MinixAdapter::MinixAdapter(const std::filesystem::path& file_name) : m_fs{file_name} {
+MinixAdapter::MinixAdapter(const std::filesystem::path& file_name) : m_file_path{file_name}, m_fs{file_name} {
     constexpr auto boot_info = minix::MinixFS::boot_block_info();
     constexpr auto sb_info = minix::MinixFS::superblock_info();
     const auto ino_bitmap_info = m_fs.inode_bitmap_info();

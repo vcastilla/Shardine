@@ -110,7 +110,7 @@ bool Controller::close() {
 }
 
 QString Controller::fs_name() const {
-    return QString::fromStdString(m_file_system->name());
+    return m_file_system->name();
 }
 
 const std::vector<SegmentInfo>& Controller::get_segments() {
@@ -122,6 +122,10 @@ fs::Structure Controller::get_structure(const unsigned segment_idx, const unsign
         return {};
     const auto segment = m_file_system->segments().at(segment_idx);
     return m_op_stack.getStructure(segment, elem_idx);
+}
+
+tl::expected<QString, QString> Controller::fsck() {
+    return m_file_system->fsck();
 }
 
 void Controller::connect_undo_view(QUndoView& view) {
