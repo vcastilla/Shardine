@@ -24,34 +24,35 @@
         <translation>Tipo de sistema de ficheros:</translation>
     </message>
     <message>
-        <location filename="src/ui/CreateFS.ui" line="61"/>
-        <source>MINIX v3</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="src/ui/CreateFS.ui" line="69"/>
+        <location filename="src/ui/CreateFS.ui" line="63"/>
         <source>Size:</source>
         <translation>Tamaño:</translation>
     </message>
     <message>
-        <location filename="src/ui/CreateFS.ui" line="79"/>
+        <location filename="src/ui/CreateFS.ui" line="73"/>
         <source> MiB</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="src/ui/CreateFS.cpp" line="47"/>
+        <location filename="src/ui/CreateFS.cpp" line="51"/>
         <source>Create file</source>
         <translation>Crear archivo</translation>
     </message>
     <message>
-        <location filename="src/ui/CreateFS.cpp" line="59"/>
+        <location filename="src/ui/CreateFS.cpp" line="63"/>
+        <location filename="src/ui/CreateFS.cpp" line="70"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="src/ui/CreateFS.cpp" line="59"/>
+        <location filename="src/ui/CreateFS.cpp" line="63"/>
         <source>Invalid file path</source>
-        <translation>Ruta de archivo invalida</translation>
+        <translation>Ruta de archivo inválida</translation>
+    </message>
+    <message>
+        <location filename="src/ui/CreateFS.cpp" line="70"/>
+        <source>Could not create filesystem</source>
+        <translation>No se ha podido crear el sistema de ficheros</translation>
     </message>
 </context>
 <context>
@@ -62,187 +63,187 @@
         <translation>MainWindow</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="162"/>
+        <location filename="src/ui/MainWindow.ui" line="164"/>
         <source>Index:</source>
         <translation>Índice:</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="194"/>
+        <location filename="src/ui/MainWindow.ui" line="196"/>
         <source>Operation &amp;history</source>
         <translation>&amp;Historial de operaciones</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="200"/>
+        <location filename="src/ui/MainWindow.ui" line="202"/>
         <source>Initial state</source>
         <translation>Estado inicial</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="220"/>
+        <location filename="src/ui/MainWindow.ui" line="222"/>
         <source>Edit</source>
         <translation>Editar</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="231"/>
+        <location filename="src/ui/MainWindow.ui" line="233"/>
         <source>Confirm operation</source>
         <translation>Confirmar operación</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="242"/>
+        <location filename="src/ui/MainWindow.ui" line="244"/>
         <source>Discard operation</source>
         <translation>Descartar operación</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="280"/>
+        <location filename="src/ui/MainWindow.ui" line="283"/>
         <source>&amp;File</source>
         <translation>&amp;Archivo</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="294"/>
+        <location filename="src/ui/MainWindow.ui" line="297"/>
         <source>&amp;Edit</source>
         <translation>&amp;Editar</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="301"/>
+        <location filename="src/ui/MainWindow.ui" line="304"/>
         <source>&amp;View</source>
         <translation>&amp;Ver</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="305"/>
+        <location filename="src/ui/MainWindow.ui" line="308"/>
         <source>&amp;Default character</source>
         <translation>&amp;Carácter por defecto</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="316"/>
+        <location filename="src/ui/MainWindow.ui" line="319"/>
         <source>&amp;Help</source>
         <translation>Ay&amp;uda</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="329"/>
+        <location filename="src/ui/MainWindow.ui" line="332"/>
         <source>toolBar</source>
         <translation>toolBar</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="353"/>
+        <location filename="src/ui/MainWindow.ui" line="356"/>
         <source>&amp;Open...</source>
         <translation>&amp;Abrir...</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="356"/>
+        <location filename="src/ui/MainWindow.ui" line="359"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="364"/>
+        <location filename="src/ui/MainWindow.ui" line="367"/>
         <source>&amp;View ASCII</source>
         <translation>&amp;Ver ASCII</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="373"/>
+        <location filename="src/ui/MainWindow.ui" line="376"/>
         <source>&amp;Save</source>
         <translation>&amp;Guardar</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="376"/>
+        <location filename="src/ui/MainWindow.ui" line="379"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="384"/>
+        <location filename="src/ui/MainWindow.ui" line="387"/>
         <source>&amp;Tracking mode</source>
         <translation>&amp;Modo de rastreo</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="389"/>
+        <location filename="src/ui/MainWindow.ui" line="392"/>
         <source>&amp;Save as...</source>
         <translation>&amp;Guardar como...</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="392"/>
+        <location filename="src/ui/MainWindow.ui" line="395"/>
         <source>Ctrl+Shift+S</source>
         <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="397"/>
+        <location filename="src/ui/MainWindow.ui" line="400"/>
         <source>Save &amp;history</source>
         <translation>Guardar &amp;historial</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="406"/>
+        <location filename="src/ui/MainWindow.ui" line="409"/>
         <source>&amp;Create...</source>
         <translation>&amp;Crear...</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="409"/>
+        <location filename="src/ui/MainWindow.ui" line="412"/>
         <source>Create</source>
         <translation>Crear</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="418"/>
+        <location filename="src/ui/MainWindow.ui" line="421"/>
         <source>&amp;Mount...</source>
         <translation>&amp;Montar...</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="421"/>
+        <location filename="src/ui/MainWindow.ui" line="424"/>
         <source>Mount at directory</source>
         <translation>Montar en directorio</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="430"/>
+        <location filename="src/ui/MainWindow.ui" line="433"/>
         <source>&amp;Check errors</source>
         <translation>&amp;Comprobar errores</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="433"/>
+        <location filename="src/ui/MainWindow.ui" line="436"/>
         <source>Check filesystem consistency</source>
         <translation>Comprobar consistencia del sistema de ficheros</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="438"/>
+        <location filename="src/ui/MainWindow.ui" line="441"/>
         <source>C&amp;lose</source>
         <translation>C&amp;errar</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="443"/>
+        <location filename="src/ui/MainWindow.ui" line="446"/>
         <source>&amp;Quit</source>
         <translation>&amp;Salir</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="448"/>
+        <location filename="src/ui/MainWindow.ui" line="451"/>
         <source>&amp;About</source>
         <translation>&amp;Acerca de</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="457"/>
+        <location filename="src/ui/MainWindow.ui" line="460"/>
         <source>About &amp;Qt</source>
         <translation>Acerca de &amp;Qt</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="466"/>
+        <location filename="src/ui/MainWindow.ui" line="469"/>
         <source>&amp;Unmount</source>
         <translation>&amp;Desmontar</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="469"/>
+        <location filename="src/ui/MainWindow.ui" line="472"/>
         <source>Unmount from directory</source>
         <translation>Desmontar de direcorio</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="474"/>
+        <location filename="src/ui/MainWindow.ui" line="477"/>
         <source>MountDummy</source>
         <translation>MountDummy</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="483"/>
+        <location filename="src/ui/MainWindow.ui" line="486"/>
         <source>&amp;Point (.)</source>
         <translation>&amp;Punto (.)</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="491"/>
+        <location filename="src/ui/MainWindow.ui" line="494"/>
         <source>&amp;Underscore (_)</source>
         <translation>&amp;Barra baja (_)</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.ui" line="499"/>
+        <location filename="src/ui/MainWindow.ui" line="502"/>
         <source>&amp;Space ( )</source>
         <translation>&amp;Espacio ( )</translation>
     </message>
@@ -283,164 +284,164 @@
         <translation>Modo de edición</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="163"/>
-        <location filename="src/ui/MainWindow.cpp" line="306"/>
+        <location filename="src/ui/MainWindow.cpp" line="165"/>
+        <location filename="src/ui/MainWindow.cpp" line="312"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="163"/>
+        <location filename="src/ui/MainWindow.cpp" line="165"/>
         <source>Command failed to execute</source>
         <translation>El comando no se ha podido ejecutar</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="170"/>
+        <location filename="src/ui/MainWindow.cpp" line="172"/>
         <source>Filesystem errors detected</source>
         <translation>Errores del sistema de ficheros detectados</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="174"/>
+        <location filename="src/ui/MainWindow.cpp" line="176"/>
         <source>No errors detected</source>
         <translation>No se han detectado errores</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="174"/>
+        <location filename="src/ui/MainWindow.cpp" line="176"/>
         <source>No filesystem errors were detected.</source>
         <translation>No se han detectado errores en el sistema de ficheros.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="187"/>
+        <location filename="src/ui/MainWindow.cpp" line="189"/>
         <source>Could not unmount file</source>
         <translation>No se ha podido desmontar el archivo</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="188"/>
+        <location filename="src/ui/MainWindow.cpp" line="190"/>
         <source>Failed to unmount.
 Ensure there are no pending operations or open terminals at the mount point and try again.</source>
         <translation>No se ha podido desmontar.
 Asegúrese de que no hay operaciones pendientes o terminales abiertas en el punto de montaje e inténtelo de nuevo.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="195"/>
+        <location filename="src/ui/MainWindow.cpp" line="197"/>
         <source>Select mount point</source>
         <translation>Seleccionar punto de montaje</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="199"/>
+        <location filename="src/ui/MainWindow.cpp" line="201"/>
         <source>Could not mount file</source>
         <translation>No se ha podido montar el archivo</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="200"/>
+        <location filename="src/ui/MainWindow.cpp" line="202"/>
         <source>Failed to mount at the specified directory.</source>
         <translation>No se ha podido montar en el directorio especificado.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="245"/>
+        <location filename="src/ui/MainWindow.cpp" line="250"/>
         <source>%1 index:</source>
         <translation>Número de %1:</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="295"/>
+        <location filename="src/ui/MainWindow.cpp" line="300"/>
         <source>Choose file</source>
         <translation>Escoger archivo</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="306"/>
+        <location filename="src/ui/MainWindow.cpp" line="312"/>
         <source>The file does not contain a supported filesystem.</source>
         <translation>El archivo no contiene un sistema de ficheros soportado.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="335"/>
+        <location filename="src/ui/MainWindow.cpp" line="346"/>
         <source>Saving changes...</source>
-        <translation>Guardango cambios...</translation>
+        <translation>Guardando cambios...</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="337"/>
+        <location filename="src/ui/MainWindow.cpp" line="348"/>
         <source>Could not save file</source>
         <translation>No se ha podido guardar el archivo</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="337"/>
+        <location filename="src/ui/MainWindow.cpp" line="348"/>
         <source>Failed to save the file.</source>
         <translation>No se ha podido guardar el archivo.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="340"/>
+        <location filename="src/ui/MainWindow.cpp" line="351"/>
         <source>Saved changes to %1</source>
         <translation>Cambios guardados en %1</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="352"/>
-        <location filename="src/ui/MainWindow.cpp" line="378"/>
+        <location filename="src/ui/MainWindow.cpp" line="363"/>
+        <location filename="src/ui/MainWindow.cpp" line="389"/>
         <source>Reload changes</source>
         <translation>Recargar cambios</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="353"/>
+        <location filename="src/ui/MainWindow.cpp" line="364"/>
         <source>File has been modified on disk. Reload changes?
 NOTE: New operations will be added at the last saved point, discarding subsequent operations.</source>
         <translation>El archivo se ha modificado en disco. ¿Recargar cambios?
 NOTA: Las operaciones nuevas se añadirán en el último punto guardado, descartando las operaciones subsecuenes.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="357"/>
+        <location filename="src/ui/MainWindow.cpp" line="368"/>
         <source>&amp;Reload</source>
         <translation>&amp;Recargar</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="379"/>
+        <location filename="src/ui/MainWindow.cpp" line="390"/>
         <source>File has been modified on disk. Reload changes?</source>
         <translation>El archivo se ha modificado en disco. ¿Recargar cambios?</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="380"/>
+        <location filename="src/ui/MainWindow.cpp" line="391"/>
         <source>Reload</source>
         <translation>Recargar</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="383"/>
+        <location filename="src/ui/MainWindow.cpp" line="394"/>
         <source>Reload changes automatically if they don&apos;t conflict with local changes.</source>
         <translation>Recargar cambios automáticamente si no entran en conflicto con los cambios locales.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="398"/>
+        <location filename="src/ui/MainWindow.cpp" line="409"/>
         <source>Reloading changes...</source>
         <translation>Recargando cambios...</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="401"/>
+        <location filename="src/ui/MainWindow.cpp" line="412"/>
         <source>Reloaded changes</source>
         <translation>Cambios recargados</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="407"/>
-        <location filename="src/ui/MainWindow.cpp" line="419"/>
+        <location filename="src/ui/MainWindow.cpp" line="418"/>
+        <location filename="src/ui/MainWindow.cpp" line="430"/>
         <source>Save file as</source>
         <translation>Guardar archivo como</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="445"/>
+        <location filename="src/ui/MainWindow.cpp" line="456"/>
         <source>About %1</source>
         <translation>Acerca de %1</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="447"/>
+        <location filename="src/ui/MainWindow.cpp" line="458"/>
         <source>This is %1 version %2.&lt;br /&gt;%1 is a simple filesystem viewer and editor, published under the &lt;a href=&quot;%3&quot;&gt;GNU General Public License version 3&lt;/a&gt;.&lt;br /&gt;Learn more about %1 at &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;&lt;hr&gt;&lt;a href=&quot;%5&quot;&gt;QHexEdit&lt;/a&gt; hex editor widget is &amp;copy; 2010-2025 Winfried Simon, licensed under the &lt;a href=&quot;%6&quot;&gt;LGPL-2.1 license&lt;/a&gt;.&lt;br /&gt;&lt;a href=&quot;%7&quot;&gt;Icon set&lt;/a&gt; is &amp;copy; 2000-2025 JetBrains s.r.o. and contributors, licensed under the &lt;a href=&quot;%8&quot;&gt;Apache-2.0 license&lt;/a&gt;.</source>
         <translation>Esto es %1 versión %2.&lt;br /&gt;%1 es un editor de sistemas de ficheros, publicado bajo la &lt;a href=&quot;%3&quot;&gt;Licencia Pública General de GNU versión 3&lt;/a&gt;.&lt;br /&gt;Aprende más sobre %1 en &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;&lt;hr&gt;El widget editor hexadecimal &lt;a href=&quot;%5&quot;&gt;QHexEdit&lt;/a&gt; es &amp;copy; 2010-2025 Winfried Simon, licenciado bajo la &lt;a href=&quot;%6&quot;&gt;licencia LGPL-2.1&lt;/a&gt;.&lt;br /&gt;El &lt;a href=&quot;%7&quot;&gt;conjunto de iconos&lt;/a&gt; es &amp;copy; 2000-2025 JetBrains s.r.o. and contributors, licenciado bajo la &lt;a href=&quot;%8&quot;&gt;licencia Apache-2.0&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="494"/>
+        <location filename="src/ui/MainWindow.cpp" line="505"/>
         <source>[*]%1 (%2 filesystem)</source>
         <translation>[*]%1 (Sistema de ficheros %2)</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="546"/>
+        <location filename="src/ui/MainWindow.cpp" line="559"/>
         <source>Unsaved changes</source>
         <translation>Cambios no guardados</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="547"/>
+        <location filename="src/ui/MainWindow.cpp" line="560"/>
         <source>Do you want to close without saving? Any unapplied operations will be lost.</source>
         <translation>¿Quiere cerrar sin guardar? Cualquier operación sin aplicar se perderá.</translation>
     </message>

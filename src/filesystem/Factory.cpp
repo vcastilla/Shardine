@@ -15,27 +15,43 @@
  */
 
 #include "Factory.h"
+
+#include <algorithm>
 #include "MinixAdapter.h"
+#include "qt-utils/qtutils.h"
 
 namespace fs {
 
-std::vector<Factory::Constructor> Factory::ctors{
+std::vector<Constructor> ctors{
         // MinixAdapter
-        [](const std::filesystem::path& path) -> std::unique_ptr<FileSystem> {
-            try {
-                return std::make_unique<MinixAdapter>(path);
-            } catch (...) {
-                return nullptr;
-            }
-        },
+        {MinixAdapter::fs_name,
+         [](const std::filesystem::path& path) {
+             const auto cmd = QString{"/usr/sbin/mkfs.minix"};
+             const auto args = QStringList{"-3", QString::fromStdString(path)};
+             return utils::qt::exec(cmd, args);
+         },
+
+         [](const std::filesystem::path& path) -> std::unique_ptr<FileSystem> {
+             try {
+                 return std::make_unique<MinixAdapter>(path);
+             } catch (...) {
+                 return nullptr;
+             }
+         }},
 };
 
-std::unique_ptr<FileSystem> Factory::create(const std::filesystem::path& path) {
-    for (const auto& ctor: ctors) {
+std::unique_ptr<FileSystem> from_existing_file(const std::filesystem::path& path) {
+    for (const auto& [name, mkfs, ctor]: ctors) {
         if (auto ptr = ctor(path); ptr)
             return ptr;
     }
     return nullptr;
+}
+
+std::vector<std::string> name_list() {
+    std::vector<std::string> names(ctors.size());
+    std::ranges::transform(ctors, names.begin(), [](const Constructor& ctor) { return ctor.name; });
+    return names;
 }
 
 } // namespace fs

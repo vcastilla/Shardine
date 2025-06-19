@@ -20,19 +20,22 @@
 #include <filesystem>
 #include <functional>
 #include <memory>
+#include <string>
 #include <vector>
 #include "FileSystem.h"
 
 namespace fs {
 
-class Factory {
-public:
-    static std::unique_ptr<FileSystem> create(const std::filesystem::path& path);
-
-private:
-    using Constructor = std::function<std::unique_ptr<FileSystem>(const std::filesystem::path&)>;
-    static std::vector<Constructor> ctors;
+struct Constructor {
+    std::string name;
+    std::function<bool(const std::filesystem::path&)> mkfs;
+    std::function<std::unique_ptr<FileSystem>(const std::filesystem::path&)> ctor;
 };
+
+extern std::vector<Constructor> ctors;
+
+std::unique_ptr<FileSystem> from_existing_file(const std::filesystem::path& path);
+std::vector<std::string> name_list();
 
 } // namespace fs
 

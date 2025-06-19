@@ -34,6 +34,8 @@ class MinixAdapter final : public FileSystem {
 public:
     explicit MinixAdapter(const std::filesystem::path& file_name);
 
+    static constexpr auto fs_name = "MINIX 3";
+
 private:
     const std::vector<Segment>& do_segments() const override {
         return m_segments;

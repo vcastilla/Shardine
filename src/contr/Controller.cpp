@@ -29,7 +29,7 @@ bool Controller::open(const std::filesystem::path& file_name) {
 
     m_file_path = file_name;
 
-    m_file_system = fs::Factory::create(m_file_path);
+    m_file_system = fs::from_existing_file(m_file_path);
     if (!m_file_system) {
         return false;
     }
@@ -151,7 +151,7 @@ void Controller::reload_changes() {
     if (utils::file_equal(m_file_path, m_backup_path))
         return;
 
-    m_file_system = fs::Factory::create(m_file_path);
+    m_file_system = fs::from_existing_file(m_file_path);
     if (!m_file_system)
         return;
 
@@ -188,5 +188,5 @@ void Controller::backup() {
         m_backup_file.close();
     }
     std::filesystem::copy_file(m_file_path, m_backup_path, std::filesystem::copy_options::overwrite_existing);
-    m_fs_backup = fs::Factory::create(m_backup_path);
+    m_fs_backup = fs::from_existing_file(m_backup_path);
 }
