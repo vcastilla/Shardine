@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22) # Qt 6.9 requires 3.22 or greater
 project(
         Shardine
-        VERSION 0.1
+        VERSION 1.0
         DESCRIPTION "A simple filesystem viewer and editor"
         LANGUAGES CXX
 )
