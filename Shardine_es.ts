@@ -285,7 +285,7 @@
     </message>
     <message>
         <location filename="src/ui/MainWindow.cpp" line="163"/>
-        <location filename="src/ui/MainWindow.cpp" line="308"/>
+        <location filename="src/ui/MainWindow.cpp" line="305"/>
         <source>Error</source>
         <translation>Error</translation>
     </message>
@@ -337,111 +337,111 @@ Asegúrese de que no hay operaciones pendientes o terminales abiertas en el punt
         <translation>No se ha podido montar en el directorio especificado.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="246"/>
+        <location filename="src/ui/MainWindow.cpp" line="243"/>
         <source>%1 index:</source>
         <translation>Número de %1:</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="296"/>
+        <location filename="src/ui/MainWindow.cpp" line="293"/>
         <source>Choose file</source>
         <translation>Escoger archivo</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="308"/>
+        <location filename="src/ui/MainWindow.cpp" line="305"/>
         <source>The file does not contain a supported filesystem.</source>
         <translation>El archivo no contiene un sistema de ficheros soportado.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="342"/>
+        <location filename="src/ui/MainWindow.cpp" line="339"/>
         <source>Saving changes...</source>
         <translation>Guardando cambios...</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="344"/>
+        <location filename="src/ui/MainWindow.cpp" line="341"/>
         <source>Could not save file</source>
         <translation>No se ha podido guardar el archivo</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="344"/>
+        <location filename="src/ui/MainWindow.cpp" line="341"/>
         <source>Failed to save the file.</source>
         <translation>No se ha podido guardar el archivo.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="347"/>
+        <location filename="src/ui/MainWindow.cpp" line="344"/>
         <source>Saved changes to %1</source>
         <translation>Cambios guardados en %1</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="359"/>
-        <location filename="src/ui/MainWindow.cpp" line="385"/>
+        <location filename="src/ui/MainWindow.cpp" line="356"/>
+        <location filename="src/ui/MainWindow.cpp" line="382"/>
         <source>Reload changes</source>
         <translation>Recargar cambios</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="360"/>
+        <location filename="src/ui/MainWindow.cpp" line="357"/>
         <source>File has been modified on disk. Reload changes?
 NOTE: New operations will be added at the last saved point, discarding subsequent operations.</source>
         <translation>El archivo se ha modificado en disco. ¿Recargar cambios?
 NOTA: Las operaciones nuevas se añadirán en el último punto guardado, descartando las operaciones subsecuenes.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="364"/>
+        <location filename="src/ui/MainWindow.cpp" line="361"/>
         <source>&amp;Reload</source>
         <translation>&amp;Recargar</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="386"/>
+        <location filename="src/ui/MainWindow.cpp" line="383"/>
         <source>File has been modified on disk. Reload changes?</source>
         <translation>El archivo se ha modificado en disco. ¿Recargar cambios?</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="387"/>
+        <location filename="src/ui/MainWindow.cpp" line="384"/>
         <source>Reload</source>
         <translation>Recargar</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="390"/>
+        <location filename="src/ui/MainWindow.cpp" line="387"/>
         <source>Reload changes automatically if they don&apos;t conflict with local changes.</source>
         <translation>Recargar cambios automáticamente si no entran en conflicto con los cambios locales.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="405"/>
+        <location filename="src/ui/MainWindow.cpp" line="402"/>
         <source>Reloading changes...</source>
         <translation>Recargando cambios...</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="408"/>
+        <location filename="src/ui/MainWindow.cpp" line="405"/>
         <source>Reloaded changes</source>
         <translation>Cambios recargados</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="414"/>
-        <location filename="src/ui/MainWindow.cpp" line="426"/>
+        <location filename="src/ui/MainWindow.cpp" line="411"/>
+        <location filename="src/ui/MainWindow.cpp" line="423"/>
         <source>Save file as</source>
         <translation>Guardar archivo como</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="452"/>
+        <location filename="src/ui/MainWindow.cpp" line="449"/>
         <source>About %1</source>
         <translation>Acerca de %1</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="454"/>
+        <location filename="src/ui/MainWindow.cpp" line="451"/>
         <source>This is %1 version %2.&lt;br /&gt;%1 is a simple filesystem viewer and editor, published under the &lt;a href=&quot;%3&quot;&gt;GNU General Public License version 3&lt;/a&gt;.&lt;br /&gt;Learn more about %1 at &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;&lt;hr&gt;&lt;a href=&quot;%5&quot;&gt;QHexEdit&lt;/a&gt; hex editor widget is &amp;copy; 2010-2025 Winfried Simon, licensed under the &lt;a href=&quot;%6&quot;&gt;LGPL-2.1 license&lt;/a&gt;.&lt;br /&gt;&lt;a href=&quot;%7&quot;&gt;Icon set&lt;/a&gt; is &amp;copy; 2000-2025 JetBrains s.r.o. and contributors, licensed under the &lt;a href=&quot;%8&quot;&gt;Apache-2.0 license&lt;/a&gt;.</source>
         <translation>Esto es %1 versión %2.&lt;br /&gt;%1 es un editor de sistemas de ficheros, publicado bajo la &lt;a href=&quot;%3&quot;&gt;Licencia Pública General de GNU versión 3&lt;/a&gt;.&lt;br /&gt;Aprende más sobre %1 en &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;&lt;hr&gt;El widget editor hexadecimal &lt;a href=&quot;%5&quot;&gt;QHexEdit&lt;/a&gt; es &amp;copy; 2010-2025 Winfried Simon, licenciado bajo la &lt;a href=&quot;%6&quot;&gt;licencia LGPL-2.1&lt;/a&gt;.&lt;br /&gt;El &lt;a href=&quot;%7&quot;&gt;conjunto de iconos&lt;/a&gt; es &amp;copy; 2000-2025 JetBrains s.r.o. and contributors, licenciado bajo la &lt;a href=&quot;%8&quot;&gt;licencia Apache-2.0&lt;/a&gt;.</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="501"/>
+        <location filename="src/ui/MainWindow.cpp" line="498"/>
         <source>[*]%1 (%2 filesystem)</source>
         <translation>[*]%1 (Sistema de ficheros %2)</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="555"/>
+        <location filename="src/ui/MainWindow.cpp" line="552"/>
         <source>Unsaved changes</source>
         <translation>Cambios no guardados</translation>
     </message>
     <message>
-        <location filename="src/ui/MainWindow.cpp" line="556"/>
+        <location filename="src/ui/MainWindow.cpp" line="553"/>
         <source>Do you want to close without saving? Any unapplied operations will be lost.</source>
         <translation>¿Quiere cerrar sin guardar? Cualquier operación sin aplicar se perderá.</translation>
     </message>

@@ -44,6 +44,7 @@ target_sources(Shardine
         external/hexedit/src/library/chunks.cpp
         external/hexedit/src/library/commands.cpp
         PRIVATE
+        tr.qrc
         src/main.cpp
         src/ui/MainWindow.cpp
         src/ui/MainWindow.h

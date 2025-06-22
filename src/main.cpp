@@ -24,8 +24,8 @@ int main(int argc, char* argv[]) {
     QApplication app{argc, argv};
     QTranslator translator;
 
-    if (!translator.load(QLocale(), project::name, "_"))
-        qDebug() << "Failed to load locale";
+    if (!translator.load(QLocale(), project::name, "_", ":/i18n"))
+        qDebug() << "Failed to load locale " << QLocale().name();
 
     QApplication::installTranslator(&translator);
 
