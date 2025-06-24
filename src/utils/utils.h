@@ -78,7 +78,8 @@ template<std::integral To, std::integral From>
 }
 
 [[nodiscard]] inline std::string timestamp_to_str(const std::time_t timestamp) {
-    return timestamp_to_fmt_str(timestamp, "%c");
+    // See https://cppreference.com/w/cpp/io/manip/put_time for formatting details
+    return timestamp_to_fmt_str(timestamp, "%F %T");
 }
 
 [[nodiscard]] inline std::string now_to_str(const char* fmt = "%FT%T%Z") {

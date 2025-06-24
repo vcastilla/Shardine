@@ -67,7 +67,7 @@ bool OperationStack::saveHistory(const std::filesystem::path& file_name) {
 
 QString OperationStack::getOpText(const std::vector<fs::Segment>& segments, const unsigned address) {
     const auto [segment, idx] = fs::addr_to_segment(segments, address);
-    const auto elem_name = QString::fromStdString(segment.element_name).toLower();
+    const auto elem_name = segment.element_name.toLower();
     if (segment.is_single_element())
         return tr("Modified %1").arg(elem_name);
     return tr("Modified %1 number %2").arg(elem_name).arg(idx);

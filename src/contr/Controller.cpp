@@ -29,7 +29,7 @@ bool Controller::open(const std::filesystem::path& file_name) {
 
     m_file_path = file_name;
 
-    m_file_system = fs::Factory::create(m_file_path);
+    m_file_system = fs::from_existing_file(m_file_path);
     if (!m_file_system) {
         return false;
     }
@@ -110,7 +110,7 @@ bool Controller::close() {
 }
 
 QString Controller::fs_name() const {
-    return QString::fromStdString(m_file_system->name());
+    return m_file_system->name();
 }
 
 const std::vector<SegmentInfo>& Controller::get_segments() {
@@ -122,6 +122,10 @@ fs::Structure Controller::get_structure(const unsigned segment_idx, const unsign
         return {};
     const auto segment = m_file_system->segments().at(segment_idx);
     return m_op_stack.getStructure(segment, elem_idx);
+}
+
+tl::expected<QString, QString> Controller::fsck() {
+    return m_file_system->fsck();
 }
 
 void Controller::connect_undo_view(QUndoView& view) {
@@ -151,7 +155,7 @@ void Controller::reload_changes() {
     if (utils::file_equal(m_file_path, m_backup_path))
         return;
 
-    m_file_system = fs::Factory::create(m_file_path);
+    m_file_system = fs::from_existing_file(m_file_path);
     if (!m_file_system)
         return;
 
@@ -171,16 +175,22 @@ bool Controller::are_new_changes_unsaved() const {
 void Controller::generate_segments() {
     m_segments.resize(0);
     for (const auto& s: m_file_system->segments()) {
-        SegmentInfo info{QString::fromStdString(s.name),         "",
-                         QString::fromStdString(s.element_name), utils::cast<int>(s.min_element_index),
-                         utils::cast<int>(s.max_element_index),  s.size};
+        SegmentInfo info{s.name,
+                         "",
+                         s.element_name,
+                         utils::cast<int>(s.min_element_index),
+                         utils::cast<int>(s.max_element_index),
+                         s.size};
         m_segments.emplace_back(info);
     }
 }
 
 void Controller::backup() {
-    m_backup_path = m_file_path;
-    m_backup_path.replace_filename(m_file_path.filename().string() + '~');
+    if (m_backup_path.empty()) {
+        m_backup_file.open(); // Create temporary file
+        m_backup_path = m_backup_file.fileName().toStdString();
+        m_backup_file.close();
+    }
     std::filesystem::copy_file(m_file_path, m_backup_path, std::filesystem::copy_options::overwrite_existing);
-    m_fs_backup = fs::Factory::create(m_backup_path);
+    m_fs_backup = fs::from_existing_file(m_backup_path);
 }

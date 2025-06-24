@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Create file system</string>
+   <string>Create filesystem</string>
   </property>
   <property name="locale">
    <locale language="English" country="UnitedStates"/>
@@ -47,7 +47,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="fileTypeLabel">
         <property name="text">
-         <string>File system type:</string>
+         <string>Filesystem type:</string>
         </property>
         <property name="buddy">
          <cstring>fileTypeBox</cstring>
@@ -55,13 +55,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QComboBox" name="fileTypeBox">
-        <item>
-         <property name="text">
-          <string>MINIX v3</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="fileTypeBox"/>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="fileSizeLabel">

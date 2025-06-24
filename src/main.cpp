@@ -15,13 +15,21 @@
  */
 
 #include <QApplication>
+#include <QTranslator>
 #include "contr/Controller.h"
+#include "project.h"
 #include "ui/MainWindow.h"
 
 int main(int argc, char* argv[]) {
     QApplication app{argc, argv};
-    Controller contr;
+    QTranslator translator;
 
+    if (!translator.load(QLocale(), project::name, "_", ":/i18n"))
+        qDebug() << "Failed to load locale " << QLocale().name();
+
+    QApplication::installTranslator(&translator);
+
+    Controller contr;
     MainWindow main_window{contr};
     main_window.show();
 

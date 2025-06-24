@@ -17,8 +17,8 @@
 #ifndef MINIXADAPTER_H
 #define MINIXADAPTER_H
 
+#include <QCoreApplication>
 #include <filesystem>
-#include <string>
 #include <vector>
 
 #include "FileSystem.h"
@@ -28,8 +28,12 @@
 namespace fs {
 
 class MinixAdapter final : public FileSystem {
+    Q_DECLARE_TR_FUNCTIONS(MinixAdapter)
+
 public:
     explicit MinixAdapter(const std::filesystem::path& file_name);
+
+    static constexpr auto fs_name = "MINIX 3";
 
 private:
     const std::vector<Segment>& do_segments() const override {
@@ -44,8 +48,16 @@ private:
         return m_fs.flush();
     }
 
-    std::string do_name() override {
-        return "MINIX 3";
+    QString do_name() const override {
+        return fs_name;
+    }
+
+    std::filesystem::path do_path() const override {
+        return m_file_path;
+    }
+
+    QString do_fsck_cmd_name() const override {
+        return "/usr/sbin/fsck.minix";
     }
 
     [[nodiscard]] Structure boot_block() const;
@@ -76,6 +88,7 @@ private:
         return m_fs.superblock().data.nzones - 1;
     }
 
+    std::filesystem::path m_file_path;
     minix::MinixFS m_fs;
     std::vector<Segment> m_segments;
 };

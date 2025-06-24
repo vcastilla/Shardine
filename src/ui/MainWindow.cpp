@@ -108,6 +108,8 @@ MainWindow::MainWindow(Controller& contr, QWidget* parent) :
 
     enableUI(false);
 
+    setAcceptDrops(true);
+
     CONNECT(m_ui->actionOpen, &QAction::triggered, this, &MainWindow::choose_file_dialog);
     CONNECT(m_ui->actionClose, &QAction::triggered, this, &MainWindow::close_file);
 
@@ -155,23 +157,19 @@ MainWindow::MainWindow(Controller& contr, QWidget* parent) :
                 update_fs_info();
             });
 
-    // TODO: Move to Controller
     const auto fsck_slot = [this] {
-        QProcess proc;
-        proc.start("/usr/sbin/fsck.minix", {QString::fromStdString(m_file_path)});
-        if (!proc.waitForFinished()) {
+        const auto fsck_res = m_contr.fsck();
+        if (!fsck_res.has_value()) {
             QMessageBox message_box{QMessageBox::Critical, tr("Error"), tr("Command failed to execute")};
-            message_box.setDetailedText(proc.errorString());
+            message_box.setDetailedText(fsck_res.error());
             message_box.exec();
             return;
         }
 
-        if (proc.exitStatus() != QProcess::NormalExit || proc.exitCode() != 0) {
-            QMessageBox::warning(this, tr("Filesystem errors detected"), proc.readAll());
-            return;
-        }
-
-        QMessageBox::information(this, tr("No errors detected"), tr("No filesystem errors were detected."));
+        if (fsck_res->isEmpty())
+            QMessageBox::information(this, tr("No errors detected"), tr("No filesystem errors were detected."));
+        else
+            QMessageBox::warning(this, tr("Filesystem errors detected"), fsck_res.value());
     };
     CONNECT(m_ui->actionCheckConsistency, &QAction::triggered, this, fsck_slot);
 
@@ -300,7 +298,8 @@ void MainWindow::choose_file_dialog() {
 }
 
 void MainWindow::open_file(const std::filesystem::path& file_name) {
-    m_contr.close();
+    if (!close_file())
+        return;
 
     if (!m_contr.open(file_name)) {
         QMessageBox::critical(this, tr("Error"), tr("The file does not contain a supported filesystem."));
@@ -312,14 +311,17 @@ void MainWindow::open_file(const std::filesystem::path& file_name) {
     m_segments_model.setSegments(m_contr.get_segments());
     m_ui->listView->setCurrentIndex(m_segments_model.index(0, 0));
 
+    update_fs_info();
+
     enableUI(true);
 }
 
-void MainWindow::close_file() {
+bool MainWindow::close_file() {
     if (!warn_unsaved_changes())
-        return;
+        return false;
 
-    m_contr.close();
+    if (!m_contr.close())
+        return false;
 
     m_struct_model.setStructure({});
     m_segments_model.setSegments({});
@@ -329,6 +331,8 @@ void MainWindow::close_file() {
     update_fs_info();
 
     enableUI(false);
+
+    return true;
 }
 
 void MainWindow::save_changes() {
@@ -512,6 +516,7 @@ void MainWindow::save_settings() {
     // Save splitter sizes
     settings.setValue("splitter/state", m_ui->splitter->saveState());
     settings.setValue("splitter_2/state", m_ui->splitter_2->saveState());
+    settings.setValue("splitter_3/state", m_ui->splitter_3->saveState());
 
     // Save HexEdit config
     settings.setValue("hex_edit/ascii", m_ui->hexEdit->asciiArea());
@@ -533,6 +538,7 @@ void MainWindow::read_settings() {
     // Restore splitter sizes
     m_ui->splitter->restoreState(settings.value("splitter/state").toByteArray());
     m_ui->splitter_2->restoreState(settings.value("splitter_2/state").toByteArray());
+    m_ui->splitter_3->restoreState(settings.value("splitter_3/state").toByteArray());
 
     // Restore HexEdit config
     m_ui->hexEdit->setAsciiArea(settings.value("hex_edit/ascii", true).toBool());
@@ -557,4 +563,14 @@ void MainWindow::closeEvent(QCloseEvent* event) {
     }
     save_settings();
     QMainWindow::closeEvent(event);
+}
+
+void MainWindow::dragEnterEvent(QDragEnterEvent* event) {
+    if (event->mimeData()->hasUrls())
+        event->acceptProposedAction();
+}
+
+void MainWindow::dropEvent(QDropEvent* event) {
+    const auto path = event->mimeData()->urls().last().toLocalFile();
+    open_file(path.toStdString());
 }

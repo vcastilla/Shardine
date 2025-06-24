@@ -28,7 +28,7 @@
 
 namespace fs {
 
-MinixAdapter::MinixAdapter(const std::filesystem::path& file_name) : m_fs{file_name} {
+MinixAdapter::MinixAdapter(const std::filesystem::path& file_name) : m_file_path{file_name}, m_fs{file_name} {
     constexpr auto boot_info = minix::MinixFS::boot_block_info();
     constexpr auto sb_info = minix::MinixFS::superblock_info();
     const auto ino_bitmap_info = m_fs.inode_bitmap_info();
@@ -37,22 +37,22 @@ MinixAdapter::MinixAdapter(const std::filesystem::path& file_name) : m_fs{file_n
     const auto data_block_info = m_fs.block_info();
 
     m_segments = {
-            {"Boot block", boot_info.begin_address, boot_info.size, [this](auto) { return boot_block(); }},
-            {"Superblock", sb_info.begin_address, sb_info.end_address - sb_info.begin_address,
+            {tr("Boot block"), boot_info.begin_address, boot_info.size, [this](auto) { return boot_block(); }},
+            {tr("Superblock"), sb_info.begin_address, sb_info.end_address - sb_info.begin_address,
              [this](auto) { return superblock(); }},
-            {"Inode bitmap", ino_bitmap_info.begin_address, ino_bitmap_info.size,
+            {tr("Inode bitmap"), ino_bitmap_info.begin_address, ino_bitmap_info.size,
              [this](auto) { return inode_bitmap(); }},
-            {"Data bitmap", data_bitmap_info.begin_address, data_bitmap_info.size,
+            {tr("Data bitmap"), data_bitmap_info.begin_address, data_bitmap_info.size,
              [this](auto) { return data_bitmap(); }},
-            {"Inodes", ino_info.begin_address, ino_info.size, [this](auto idx) { return inode(idx); }, "Inode",
+            {tr("Inodes"), ino_info.begin_address, ino_info.size, [this](auto idx) { return inode(idx); }, tr("Inode"),
              sizeof(minix::INode), min_inode_index(), max_inode_index()},
-            {"Data blocks", data_block_info.begin_address, data_block_info.size,
-             [this](auto idx) { return data_block(idx); }, "Data block", m_fs.superblock().data.block_size,
+            {tr("Data blocks"), data_block_info.begin_address, data_block_info.size,
+             [this](auto idx) { return data_block(idx); }, tr("Data block"), m_fs.superblock().data.block_size,
              min_data_index(), max_data_index()},
     };
 }
 
-constexpr auto empty_str = [](std::uint32_t) { return ""; };
+constexpr auto empty_str = [](auto) { return std::string{}; };
 
 Structure MinixAdapter::boot_block() const {
     const auto [offset, bblock] = m_fs.boot_block();
@@ -69,24 +69,24 @@ Structure MinixAdapter::inode(const unsigned index) const {
     const QByteArray ino_bytes{reinterpret_cast<const char*>(&ino), sizeof(ino)};
 
     const std::vector<Field> fields{
-            {"File type and rwx bits", ino.mode, ino::mode_to_str},
-            {"No. references", ino.nlinks},
-            {"Owner ID", ino.uid},
-            {"Group ID", ino.gid},
-            {"File size in bytes", ino.size},
-            {"Last accessed", ino.atime, utils::timestamp_to_str},
-            {"Modified", ino.mtime, utils::timestamp_to_str},
-            {"Status changed", ino.ctime, utils::timestamp_to_str},
-            {"Direct zone 0", ino.zone[0]},
-            {"Direct zone 1", ino.zone[1]},
-            {"Direct zone 2", ino.zone[2]},
-            {"Direct zone 3", ino.zone[3]},
-            {"Direct zone 4", ino.zone[4]},
-            {"Direct zone 5", ino.zone[5]},
-            {"Direct zone 6", ino.zone[6]},
-            {"Single indirect zone", ino.indirect_zone},
-            {"Double indirect zone", ino.double_indirect_zone},
-            {"(Unused)", ino.unused, empty_str},
+            {tr("File type and rwx bits"), ino.mode, ino::mode_to_str},
+            {tr("No. references"), ino.nlinks},
+            {tr("Owner ID"), ino.uid},
+            {tr("Group ID"), ino.gid},
+            {tr("File size in bytes"), ino.size},
+            {tr("Last accessed"), ino.atime, utils::timestamp_to_str},
+            {tr("Modified"), ino.mtime, utils::timestamp_to_str},
+            {tr("Status changed"), ino.ctime, utils::timestamp_to_str},
+            {tr("Direct zone 0"), ino.zone[0]},
+            {tr("Direct zone 1"), ino.zone[1]},
+            {tr("Direct zone 2"), ino.zone[2]},
+            {tr("Direct zone 3"), ino.zone[3]},
+            {tr("Direct zone 4"), ino.zone[4]},
+            {tr("Direct zone 5"), ino.zone[5]},
+            {tr("Direct zone 6"), ino.zone[6]},
+            {tr("Single indirect zone"), ino.indirect_zone},
+            {tr("Double indirect zone"), ino.double_indirect_zone},
+            {tr("(Unused)"), ino.unused, empty_str},
     };
 
     return {offset, ino_bytes, fields};
@@ -98,19 +98,20 @@ Structure MinixAdapter::superblock() const {
     const QByteArray sb_bytes{reinterpret_cast<const char*>(&sb), sizeof(sb)};
 
     const std::vector<Field> fields{
-            {"Maximum no. of i-nodes", sb.ninodes},
-            {"(Padding)", sb.pad0, empty_str},
-            {"No. of i-node bitmap blocks", sb.imap_blocks},
-            {"No. of data bitmap blocks", sb.zmap_blocks},
-            {"First data zone", sb.first_data_zone},
-            {"log2(block/zone)", sb.log_zone_size},
-            {"(Padding)", sb.pad1, empty_str},
-            {"Maximum file size in bytes", sb.max_size},
-            {"No. total zones", sb.nzones},
-            {"Magic number", sb.magic},
-            {"(Padding)", sb.pad2, empty_str},
-            {"Block size in bytes", sb.block_size},
-            {"File system sub-version", sb.disk_version, [](auto x) { return std::to_string(static_cast<int>(x)); }},
+            {tr("Maximum no. of inodes"), sb.ninodes},
+            {tr("(Padding)"), sb.pad0, empty_str},
+            {tr("No. of inode bitmap blocks"), sb.imap_blocks},
+            {tr("No. of data bitmap blocks"), sb.zmap_blocks},
+            {tr("First data zone"), sb.first_data_zone},
+            {tr("log2(block/zone)"), sb.log_zone_size},
+            {tr("(Padding)"), sb.pad1, empty_str},
+            {tr("Maximum file size in bytes"), sb.max_size},
+            {tr("No. total zones"), sb.nzones},
+            {tr("Magic number"), sb.magic},
+            {tr("(Padding)"), sb.pad2, empty_str},
+            {tr("Block size in bytes"), sb.block_size},
+            {tr("File system sub-version"), sb.disk_version,
+             [](auto x) { return std::to_string(static_cast<int>(x)); }},
     };
 
     return {offset, sb_bytes, fields};

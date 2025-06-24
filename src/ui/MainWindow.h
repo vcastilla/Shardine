@@ -20,13 +20,13 @@
 #include <QCloseEvent>
 #include <QMainWindow>
 #include <memory>
-#include <project.h>
 #include <unordered_map>
 #include <utility>
 #include "SegmentModel.h"
 #include "StructureModel.h"
 #include "contr/Controller.h"
 #include "contr/OperationStack.h"
+#include "project.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -52,7 +52,7 @@ private slots:
 
     void choose_file_dialog();
     void open_file(const std::filesystem::path& file_name);
-    void close_file();
+    bool close_file();
 
     void save_changes();
     void reload_changes_dialog();
@@ -83,6 +83,8 @@ private:
 
     bool warn_unsaved_changes();
     void closeEvent(QCloseEvent* event) override;
+    void dragEnterEvent(QDragEnterEvent* event) override;
+    void dropEvent(QDropEvent* event) override;
 
     const std::unique_ptr<Ui::MainWindow> m_ui;
 

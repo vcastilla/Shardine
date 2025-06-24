@@ -18,6 +18,7 @@
 #include "ui_CreateFS.h"
 
 #include <QFileDialog>
+#include "filesystem/Factory.h"
 #include "qt-utils/qtutils.h"
 #include "utils/utils.h"
 
@@ -34,6 +35,9 @@ CreateFS::CreateFS(QWidget* parent) :
     m_ui->setupUi(this);
 
     connect(m_ui->pathButton, &QPushButton::pressed, this, &CreateFS::createFileDialog);
+
+    for (const auto& [name, mkfs, ctor]: fs::ctors)
+        m_ui->fileTypeBox->addItem(QString::fromStdString(name));
 
     connect(m_buttonBox.get(), &QDialogButtonBox::accepted, this, &CreateFS::accept);
     connect(m_buttonBox.get(), &QDialogButtonBox::rejected, this, &CreateFS::reject);
@@ -61,9 +65,13 @@ bool CreateFS::createFileSystem() {
     }
 
     // Make file system
-    const auto cmd = QString{"/usr/sbin/mkfs.minix"};
-    const auto args = QStringList{"-3", path.c_str()};
-    return utils::qt::exec(cmd, args);
+    const auto idx = m_ui->fileTypeBox->currentIndex();
+    if (!fs::ctors.at(idx).mkfs(path)) {
+        QMessageBox::critical(this, tr("Error"), tr("Could not create filesystem"));
+        return false;
+    }
+
+    return true;
 }
 
 void CreateFS::accept() {

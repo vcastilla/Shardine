@@ -54,7 +54,7 @@ struct Structure {
         return current_idx;
     }
 
-    [[nodiscard]] std::string name_at(const std::size_t idx) const {
+    [[nodiscard]] QString name_at(const std::size_t idx) const {
         ASSERT(idx < fields.size());
         return fields[idx].name();
     }

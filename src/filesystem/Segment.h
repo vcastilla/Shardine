@@ -25,11 +25,11 @@
 namespace fs {
 
 struct Segment {
-    std::string name;
+    QString name;
     std::size_t address{};
     std::size_t size{};
     std::function<Structure(std::size_t)> read;
-    std::string element_name{name};
+    QString element_name{name};
     std::size_t element_size{size};
     unsigned min_element_index{};
     unsigned max_element_index{};

@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.15...4.0)
+cmake_minimum_required(VERSION 3.22) # Qt 6.9 requires 3.22 or greater
 project(
         Shardine
-        VERSION 0.1
+        VERSION 1.0
         DESCRIPTION "A simple filesystem viewer and editor"
         LANGUAGES CXX
 )
@@ -16,6 +16,7 @@ find_package(Qt6 COMPONENTS
         Core
         Gui
         Widgets
+        LinguistTools
         Svg
         REQUIRED
 )
@@ -43,6 +44,7 @@ target_sources(Shardine
         external/hexedit/src/library/chunks.cpp
         external/hexedit/src/library/commands.cpp
         PRIVATE
+        tr.qrc
         src/main.cpp
         src/ui/MainWindow.cpp
         src/ui/MainWindow.h
@@ -83,13 +85,16 @@ target_sources(Shardine
 find_package(libassert CONFIG REQUIRED)
 
 target_link_libraries(Shardine PRIVATE
-        Qt::Core
-        Qt::Gui
-        Qt::Widgets
-        Qt::Svg
+        Qt6::Core
+        Qt6::Gui
+        Qt6::Widgets
+        Qt6::Svg
         hexedit
         libassert::assert
 )
+
+qt_standard_project_setup(I18N_TRANSLATED_LANGUAGES es)
+qt_add_translations(Shardine)
 
 add_subdirectory(test)
 

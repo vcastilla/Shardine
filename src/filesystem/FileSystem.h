@@ -17,9 +17,11 @@
 #ifndef IFILESYSTEM_H
 #define IFILESYSTEM_H
 
+#include <QProcess>
 #include <cstddef>
+#include <filesystem>
 #include <ranges>
-#include <string>
+#include <tl/expected.hpp>
 #include <utility>
 #include <vector>
 #include "Segment.h"
@@ -32,7 +34,7 @@ public:
         return do_segments();
     }
 
-    bool write(unsigned address, const std::ranges::contiguous_range auto& byte_array) {
+    bool write(const unsigned address, const std::ranges::contiguous_range auto& byte_array) {
         const auto begin = std::ranges::data(byte_array);
         return do_write(address, reinterpret_cast<const char*>(begin), std::ranges::size(byte_array));
     }
@@ -41,8 +43,17 @@ public:
         return do_flush();
     }
 
-    std::string name() {
+    QString name() const {
         return do_name();
+    }
+
+    tl::expected<QString, QString> fsck() {
+        QProcess proc;
+        proc.start(do_fsck_cmd_name(), {QString::fromStdString(do_path())});
+        if (!proc.waitForFinished())
+            return tl::make_unexpected(proc.errorString());
+
+        return proc.readAll();
     }
 
     virtual ~FileSystem() = default;
@@ -51,14 +62,16 @@ private:
     virtual const std::vector<Segment>& do_segments() const = 0;
     virtual bool do_write(unsigned address, const char* data, unsigned size) = 0;
     virtual bool do_flush() = 0;
-    virtual std::string do_name() = 0;
+    virtual QString do_name() const = 0;
+    virtual std::filesystem::path do_path() const = 0;
+    virtual QString do_fsck_cmd_name() const = 0;
 };
 
 inline std::vector<std::pair<Structure, Structure>> diff(const FileSystem& fs1, const FileSystem& fs2) {
     std::vector<std::pair<Structure, Structure>> result;
 
-    const auto segments1 = fs1.segments();
-    const auto segments2 = fs2.segments();
+    const auto& segments1 = fs1.segments();
+    const auto& segments2 = fs2.segments();
 
     auto seg1 = segments1.begin(), seg2 = segments2.begin();
     for (; seg1 != segments1.end(); ++seg1, ++seg2) {

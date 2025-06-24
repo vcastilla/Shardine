@@ -17,6 +17,7 @@
 #ifndef FIELD_H
 #define FIELD_H
 
+#include <QString>
 #include <concepts>
 #include <cstddef>
 #include <cstring>
@@ -38,7 +39,7 @@ class Field {
 
 public:
     template<typename Value>
-    constexpr Field(std::string name, Value, StrFunction<Value> auto&& to_str) :
+    constexpr Field(QString name, Value, StrFunction<Value> auto&& to_str) :
         m_name{std::move(name)}, m_byte_size{sizeof(Value)}, m_to_str{[to_str](const Byte arr[]) {
             Value v;
             std::memcpy(&v, arr, sizeof(Value));
@@ -46,7 +47,7 @@ public:
         }} {}
 
     template<typename Value>
-    constexpr Field(const std::string& name, Value value) :
+    constexpr Field(const QString& name, Value value) :
         Field(name, value, [](const Value& val) {
             std::stringstream ss;
             ss << val;
@@ -54,7 +55,7 @@ public:
         }) {}
 
     template<typename Value, std::size_t N>
-    constexpr Field(std::string name, const Value (&)[N], StrFunction<Value> auto&& to_str) :
+    constexpr Field(QString name, const Value (&)[N], StrFunction<Value> auto&& to_str) :
         m_name{std::move(name)}, m_byte_size{sizeof(Value[N])}, m_to_str{[to_str](const Byte arr[]) {
             Value v;
             std::memcpy(&v, arr, sizeof(Value));
@@ -63,7 +64,7 @@ public:
         m_array_len{N} {}
 
     template<typename Value, std::size_t N>
-    constexpr Field(const std::string& name, const Value (&value)[N]) :
+    constexpr Field(const QString& name, const Value (&value)[N]) :
         Field(name, value, [](const Value& val) {
             std::stringstream ss;
             ss << val;
@@ -72,14 +73,14 @@ public:
 
     // Specialization for char array
     template<std::size_t N>
-    constexpr Field(const std::string& name, const char (&)[N]) :
+    constexpr Field(const QString& name, const char (&)[N]) :
         m_name{std::move(name)}, m_byte_size{sizeof(char[N])}, m_to_str{[](const Byte arr[]) {
             std::stringstream ss;
             ss << reinterpret_cast<const char*>(arr);
             return ss.str();
         }} {}
 
-    [[nodiscard]] const std::string& name() const noexcept {
+    [[nodiscard]] const QString& name() const noexcept {
         return m_name;
     }
 
@@ -104,7 +105,7 @@ public:
     }
 
 private:
-    std::string m_name;
+    QString m_name;
     std::size_t m_byte_size;
     std::function<std::string(const Byte[])> m_to_str;
     std::size_t m_array_len{1};

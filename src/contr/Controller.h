@@ -19,14 +19,15 @@
 
 #include <QFileSystemWatcher>
 #include <QString>
+#include <QTemporaryFile>
 #include <memory>
+#include <tl/expected.hpp>
 #include <vector>
 
 #include "OperationStack.h"
 #include "SegmentInfo.h"
 #include "filesystem/FileSystem.h"
 #include "qt-utils/MountableDevice.h"
-#include "qt-utils/Operation.h"
 
 class Controller final : public QObject {
     Q_OBJECT
@@ -42,6 +43,7 @@ public:
     QString fs_name() const;
     const std::vector<SegmentInfo>& get_segments();
     fs::Structure get_structure(unsigned segment_idx, unsigned elem_idx);
+    tl::expected<QString, QString> fsck();
 
     // Mount
     bool mount(const QString& str);
@@ -76,6 +78,7 @@ private:
 
     OperationStack m_op_stack;
 
+    QTemporaryFile m_backup_file;
     std::filesystem::path m_file_path;
     std::filesystem::path m_backup_path;
 

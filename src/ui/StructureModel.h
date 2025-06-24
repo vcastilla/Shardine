@@ -40,12 +40,12 @@ public:
 
     [[nodiscard]] int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     [[nodiscard]] int columnCount(const QModelIndex& parent = QModelIndex()) const override;
-    [[nodiscard]] QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
+    [[nodiscard]] QVariant data(const QModelIndex& idx, int role = Qt::DisplayRole) const override;
     [[nodiscard]] QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
-    void setModified(int index, bool value);
-    [[nodiscard]] bool isModified(int index) const;
-    std::size_t byteOffset(const QModelIndex& index) const;
-    std::size_t byteSize(const QModelIndex& index) const;
+    void setModified(int idx, bool value);
+    [[nodiscard]] bool isModified(int idx) const;
+    std::size_t byteOffset(const QModelIndex& idx) const;
+    std::size_t byteSize(const QModelIndex& idx) const;
 
     void change_selection(HexEdit& hex_edit, const QItemSelection& selected) const;
     void highlight_changes(const fs::ByteArray& edit_data);
