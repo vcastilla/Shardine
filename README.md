@@ -10,12 +10,13 @@ Shardine is distributed as an AppImage: download it, make it executable and run 
 ## Features
 
 - View the fields of internal structures from a filesystem (i.e. bitmaps, inodes, data blocks...)
-- Edit any internal strucure
+- Edit any internal structure
 - Use the operation history to undo/redo any changes
 - Mount the filesystem to see external changes in real time
 - Check filesystem consistency to catch mistakes
 
-Currently, only MINIX V3 filesystems are supported. Future releases will handle more filesystems (such as Ext2).
+See the full overview of features in the [wiki page](https://github.com/vcastilla/Shardine/wiki/Application-features).
+Currently, only MINIX V3 filesystems are supported.
 
 ## Building from source
 
