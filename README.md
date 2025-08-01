@@ -15,14 +15,10 @@ Shardine is distributed as an AppImage: download it, make it executable and run 
 - Mount the filesystem to see external changes in real time
 - Check filesystem consistency to catch mistakes
 
-See the full overview of features in the [wiki page](https://github.com/vcastilla/Shardine/wiki/Application-features).
+See the full overview of features on the [wiki page](https://github.com/vcastilla/Shardine/wiki/Application-features).
 Currently, only MINIX V3 filesystems are supported.
 
 ## Building from source
 
-To build from source, you need to install CMake &geq; 3.22 and [vcpkg](https://vcpkg.io).
-Then, simply run
-
-    cmake . -DCMAKE_BUILD_TYPE=Release `-DCMAKE_TOOLCHAIN_FILE=/path/to/vcpkg`
-
-from the command line, substituting `/path/to/vcpkg` with the path to your vcpkg installation directory.
+CMake, vcpkg and Qt 6 are required.
+See [Building from source](https://github.com/vcastilla/Shardine/wiki/Building-from-source) for instructions on how to compile.
